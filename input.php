@@ -1,16 +1,15 @@
 <?php
-//  送信されたか判定
-$isSubmitted = $_SERVER["REQUEST_METHOD"] === "POST";
 
-// 入力値を取得
+// POSTで送信された入力値を取得
+// 初回表示、送信されていない場合は空文字
 $userName = $_POST["userName"] ?? "";
 $mailAddress = $_POST["mailAddress"] ?? "";
 $age = $_POST["age"] ?? "";
 
-// HTMLに表示するとき用
+// HTMLに表示するときのために、特殊文字をエスケープ
 $userName = htmlspecialchars($userName, ENT_QUOTES, "UTF-8");
 $mailAddress = htmlspecialchars($mailAddress, ENT_QUOTES, "UTF-8");
-$age = htmlspecialchars($age, ENT_QUOTES, "UTF-8")
+$age = htmlspecialchars($age, ENT_QUOTES, "UTF-8");
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -24,16 +23,16 @@ $age = htmlspecialchars($age, ENT_QUOTES, "UTF-8")
 
     <form action="confirm.php" method="post">
         <div>
-
-                <lable for="userName">お名前：</lable>
-                <input type="text" name="userName" id="userName" value="<?= $userName ?>" required>
+            <label for="userName">お名前：</label>
+            <!-- name="userName" の値は、PHP側で $_POST["userName"] として受け取る -->
+            <input type="text" name="userName" id="userName" value="<?= $userName ?>" required>
         </div>
         <div>
             <label for="mailAddress">メールアドレス：</label>
-            <input type="email" name="mailAddress" id="mailAddress" value="<? $mailAddress ?>" required>
+            <input type="email" name="mailAddress" id="mailAddress" value="<?= $mailAddress ?>" required>
         </div>
         <div>
-                <label for="age"></label>年齢<label for=""></label>
+                <label for="age">年齢</label>
                 <input type="number" min="0" max="120" name="age" id="age" value="<?= $age ?>" required>
         </div>
 
