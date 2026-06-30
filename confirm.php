@@ -1,13 +1,10 @@
 <?php
-//  送信されたか判定
-$isSubmitted = $_SERVER["REQUEST_METHOD"] === "POST";
-
 //入力データを受け取る
 $userName = $_POST["userName"];
 $mailAddress = $_POST["mailAddress"];
 $age = $_POST["age"];
 
-// HTMLに表示するとき用
+// HTMLに表示するときのために、特殊文字をエスケープ
 $userName = htmlspecialchars($userName, ENT_QUOTES, "UTF-8");
 $mailAddress = htmlspecialchars($mailAddress, ENT_QUOTES, "UTF-8");
 $age = htmlspecialchars($age, ENT_QUOTES, "UTF-8");

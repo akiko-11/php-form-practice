@@ -3,7 +3,7 @@ $userName = $_POST["userName"];
 $mailAddress = $_POST["mailAddress"];
 $age = $_POST["age"];
 
-// HTMLに表示するとき用
+// HTMLに表示するときのために、特殊文字をエスケープ
 $userName = htmlspecialchars($userName, ENT_QUOTES, "UTF-8");
 $mailAddress = htmlspecialchars($mailAddress, ENT_QUOTES, "UTF-8");
 $age = htmlspecialchars($age, ENT_QUOTES, "UTF-8");
@@ -19,6 +19,6 @@ $age = htmlspecialchars($age, ENT_QUOTES, "UTF-8");
     <h1>ユーザー登録（３/３）完了</h1>
     <p><?= $userName ?>さん、登録が完了しました！</p>
     <p>確認メールを <?= $mailAddress ?>に送信しました。</p>
-    <a href='input.php'>最初に戻る</a>
+    <p><a href='input.php'>最初に戻る</a></p>
 </body>
 </html>
